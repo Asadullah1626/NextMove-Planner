@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NextMove Planner 💼</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>NextMove Planner <span class="suit">💼</span></h1>
+      <p class="tag">Plan. Prioritize. Propel.</p>
+    </div>
+
+    <div class="top-actions">
+      <div class="theme-switch">
+        <label class="theme-label">Dark Gold</label>
+        <input id="theme-toggle" type="checkbox" />
+        <label for="theme-toggle" class="switch"></label>
+        <label class="theme-label">Royal Gradient</label>
+      </div>
+      <div class="time" id="time-display" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="create">
+      <input id="task-input" type="text" placeholder="Add a new task — press Enter or click Add" autocomplete="off" />
+      <input id="task-date" type="date" aria-label="Due date" />
+      <select id="task-priority" title="Priority">
+        <option value="none">Normal</option>
+        <option value="high">🔺 High Priority</option>
+        <option value="low">🔹 Low Priority</option>
+      </select>
+      <button id="add-btn" class="btn primary">Add</button>
+    </section>
+
+    <section class="controls">
+      <nav class="filters" role="tablist" aria-label="Filters">
+        <button class="filter active" data-filter="all" role="tab">📝 All Tasks</button>
+        <button class="filter" data-filter="active" role="tab">⏳ Active</button>
+        <button class="filter" data-filter="done" role="tab">✅ Done</button>
+      </nav>
+
+      <div class="bulk">
+        <button id="complete-all" class="btn subtle">Complete All</button>
+        <button id="purge-completed" class="btn warn">Purge Completed</button>
+        <button id="clear-all" class="btn danger">Clear All</button>
+      </div>
+    </section>
+
+    <section class="status-bar">
+      <div>Total: <strong id="total-count">0</strong></div>
+      <div>Active: <strong id="active-count">0</strong></div>
+      <div>Done: <strong id="done-count">0</strong></div>
+    </section>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+  </main>
+
+  <!-- Modal / Confirm -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <p id="modal-msg">Are you sure?</p>
+      <div class="modal-actions">
+        <button id="modal-confirm" class="btn primary">Yes</button>
+        <button id="modal-cancel" class="btn subtle">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <!-- Sounds (optional) -->
+  <audio id="sound-add" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6b57a3b9b9.mp3?filename=click-124467.mp3" />
+  </audio>
+  <audio id="sound-delete" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c79ab746c8.mp3?filename=pop-124467.mp3" />
+  </audio>
+
+  <footer class="footer">
+    <small>Made with care • NextMove Planner 💼</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
